@@ -6,6 +6,8 @@ import { PaymentInit } from "./customComponents/PaymentInit";
 import { PaymentCountry } from "./customComponents/PaymentCountry";
 import { PaymentProvider } from "./customComponents/PaymentProvider";
 import { PaymentProviderSelect } from "./customComponents/PaymentProviderSelect";
+import { CustomEdge } from "./customComponents/CustomEdge";
+import { generateUID } from "../../utils/uidGeneratore";
 
 const nodeTypes = {
   'paymentInit': PaymentInit,
@@ -14,15 +16,21 @@ const nodeTypes = {
   'paymentProviderSelect': PaymentProviderSelect
 }
 
+const edgeTypes = {
+  "customEdge" : CustomEdge
+}
+
 export const WorkFlow = () => {
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges)
 
   const onConnect = useCallback((connection) => {
-    const edge = {...connection, animated: true, id: `${edges.length} + 1`}
+    const UID = generateUID(10)
+    const edge = {...connection, animated: true, id: UID, type: "customEdge"}
     setEdges(prev => addEdge(edge, prev))
   }, [])
+
 
   return (
     <div style={{ height: "93vh", width: "100%", border: "1px solid black" }}>
@@ -34,6 +42,7 @@ export const WorkFlow = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
       >
         <Background/>
         <Controls />

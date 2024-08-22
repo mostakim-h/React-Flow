@@ -1,4 +1,5 @@
-import { Handle, Position } from "reactflow";
+import { Position } from "reactflow";
+import { CustomHandle } from "./CustomHandle";
 
 export const PaymentInit = ({ data }) => {
   return (
@@ -10,7 +11,7 @@ export const PaymentInit = ({ data }) => {
         <br />
         <span>${data?.amount}</span>
       </div>
-      <Handle type="source" position={Position.Right}/>
+      <CustomHandle type="source" position={Position.Right}/>
     </div>
   );
 };

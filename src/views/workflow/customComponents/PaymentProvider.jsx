@@ -1,5 +1,6 @@
 import { X } from "react-feather";
-import { useReactFlow } from "reactflow";
+import { Handle, Position, useReactFlow } from "reactflow";
+import { CustomHandle } from "./CustomHandle";
 
 const PAYMENT_PROVIDER_IMAGE_MAP = {
   St: "https://cdn.worldvectorlogo.com/logos/stripe-2.svg",
@@ -62,6 +63,7 @@ export const PaymentProvider = ({ data, id }) => {
           <X size={"14"} />
         </span>
       </div>
+      <CustomHandle type="target" position={Position.Left}/>
     </div>
   );
 };

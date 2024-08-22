@@ -1,5 +1,6 @@
 import ReactCountryFlag from "react-country-flag";
-import { Handle, Position } from "reactflow";
+import { Position } from "reactflow";
+import { CustomHandle } from "./CustomHandle";
 
 export const PaymentCountry = ({ data }) => {
   const { currency, country, countryCode } = data;
@@ -29,8 +30,8 @@ export const PaymentCountry = ({ data }) => {
         <br />
         <span>{currency}</span>
       </div>
-      <Handle type="target" position={Position.Left} />
-      <Handle type="source" position={Position.Right} />
+      <CustomHandle type="target" position={Position.Left} />
+      <CustomHandle type="source" position={Position.Right} />
     </div>
   );
 };
