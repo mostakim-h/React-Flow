@@ -30,15 +30,15 @@ export const PaymentProviderSelect = () => {
   return (
     <div>
       <label htmlFor="paymentProvider">Add Payment Provider</label>
-      <Select
-        className="basic-single"
-        classNamePrefix="select"
-        defaultValue={PAYMENT_PROVIDERS[0]}
-        name="paymentProvider"
-        id="paymentProvider"
-        options={PAYMENT_PROVIDERS}
-        onChange={(e) => onProviderClick(e)}
-      />
+      <select
+        onChange={(e) => {
+          onProviderClick({label: PAYMENT_PROVIDERS.find(x => x.value === e.target.value).label, value: e.target.value})
+        }}
+      >
+        {PAYMENT_PROVIDERS.map(x=> (
+          <option key={x.value} label={x.label} value={x.value}>{x.label}</option>
+        ))}
+      </select>
     </div>
   );
 };

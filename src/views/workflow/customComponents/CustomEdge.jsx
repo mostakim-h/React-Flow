@@ -37,11 +37,15 @@ export const CustomEdge = ({
             transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
             fontSize: 12,
             pointerEvents: "all",
-            background: 'white',
-            cursor: "pointer"
+            background: '#d0d1d0',
+            cursor: "pointer",
+            width: '16px',
+            height: '16px',
+            borderRadius: '50%',
+            padding: '2px'
           }}
         >
-          <X onClick={() => setEdges(prev => prev.filter(x => x.id !== id))}/>
+          <X size={12} onClick={() => setEdges(prev => prev.filter(x => x.id !== id))}/>
         </div>
       </EdgeLabelRenderer>
     </>
